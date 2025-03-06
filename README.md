@@ -1,6 +1,27 @@
-# Vegan Food Trivia Game API
+# Vegan Food Trivia Game
 
-A RESTful API for a vegan-friendly food trivia game featuring questions about world cuisines, cooking basics, food science, and culinary history. Each question includes detailed explanations to enhance learning.
+A full-stack trivia game application featuring questions about world cuisines, cooking basics, food science, and culinary history. Built with React (frontend) and FastAPI (backend).
+
+## Project Structure
+
+```
+trivia-game/
+├── api/              # Backend API
+│   ├── __init__.py
+│   ├── api.py       # FastAPI application and endpoints
+│   ├── api_models.py # API request/response models
+│   ├── game.py      # Game logic
+│   ├── game_session.py # Session management
+│   ├── main.py      # CLI interface
+│   ├── models.py    # Data models
+│   ├── questions_db.py # Question database
+│   └── requirements.txt
+├── client/          # Frontend React application
+│   ├── src/         # React source code
+│   ├── public/      # Static assets
+│   └── package.json # Frontend dependencies
+└── README.md
+```
 
 ## Features
 
@@ -14,134 +35,97 @@ A RESTful API for a vegan-friendly food trivia game featuring questions about wo
 
 ## Prerequisites
 
-- Python 3.7+
+- Python 3.7+ (Backend)
+- Node.js 16+ (Frontend)
 - pip (Python package installer)
+- npm (Node package manager)
 
 ## Installation
 
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd trivia-game-2025
+cd trivia-game
 ```
 
-2. Create a virtual environment (recommended):
+2. Set up the backend:
 ```bash
+# Create a virtual environment
 python -m venv venv
 source venv/bin/activate  # On Windows, use: venv\Scripts\activate
-```
 
-3. Install dependencies:
-```bash
+# Install backend dependencies
+cd api
 pip install -r requirements.txt
 ```
 
-## Running the API
-
-Start the API server:
+3. Set up the frontend:
 ```bash
-uvicorn api:app --reload
+cd client
+npm install
 ```
 
+## Development
+
+1. Start the backend server:
+```bash
+cd api
+uvicorn api.main:app --reload
+```
 The API will be available at `http://localhost:8000`
 
-## Game Categories and Sets
+2. Start the frontend development server:
+```bash
+cd client
+npm run dev
+```
+The application will be available at `http://localhost:5173`
+
+## Game Categories
 
 ### 1. World Cuisines
-- **Asian Cuisine Explorer** (Easy-Medium)
-  - Traditional Japanese, Chinese, Korean dishes
-  - Cooking techniques and ingredients
-- **European Food Journey** (Medium-Hard)
-  - Classic European recipes and methods
-  - Regional specialties and traditions
-- **Latin American Flavors** (Easy-Medium)
-  - Traditional preparations and ingredients
-  - Cultural significance of dishes
-- **Mediterranean Delights** (Medium-Hard)
-  - Healthy Mediterranean cooking
-  - Traditional preparation methods
-- **Southeast Asian Flavors** (Medium)
-  - Vietnamese, Thai, and Indonesian cuisine
-  - Traditional herbs and spices
-- **Regional Indian Cuisine** (Medium-Hard)
-  - Diverse regional specialties
-  - Traditional cooking techniques
-- **East Asian Traditions** (Medium)
-  - Chinese, Korean, and Japanese traditions
-  - Cultural cooking methods
+- Asian Cuisine Explorer (Easy-Medium)
+- European Food Journey (Medium-Hard)
+- Latin American Flavors (Easy-Medium)
+- Mediterranean Delights (Medium-Hard)
+- Southeast Asian Flavors (Medium)
+- Regional Indian Cuisine (Medium-Hard)
+- East Asian Traditions (Medium)
 
 ### 2. Cooking Basics
-- **Kitchen Tools & Equipment** (Easy-Medium)
-  - Essential kitchen implements
-  - Proper tool usage and care
-- **Cooking Methods** (Easy-Medium)
-  - Basic cooking techniques
-  - Temperature and timing
-- **Baking Fundamentals** (Medium)
-  - Plant-based baking principles
-  - Ingredient substitutions
-- **Professional Knife Skills** (Medium-Hard)
-  - Cutting techniques
-  - Knife care and safety
-- **Kitchen Organization** (Easy)
-  - Mise en place principles
-  - Efficient kitchen setup
-- **Temperature Control** (Medium)
-  - Heat management
-  - Cooking precision
-- **Flavor Building** (Medium-Hard)
-  - Taste balancing
-  - Seasoning techniques
+- Kitchen Tools & Equipment (Easy-Medium)
+- Cooking Methods (Easy-Medium)
+- Baking Fundamentals (Medium)
+- Professional Knife Skills (Medium-Hard)
+- Kitchen Organization (Easy)
+- Temperature Control (Medium)
+- Flavor Building (Medium-Hard)
 
 ### 3. Food Science
-- **Ingredients Science** (Medium-Hard)
-  - Chemical properties of ingredients
-  - Cooking reactions
-- **Food Preservation** (Medium)
-  - Traditional and modern methods
-  - Safety principles
-- **Molecular Gastronomy** (Hard)
-  - Modern cooking techniques
-  - Scientific principles
-- **Fermentation & Probiotics** (Medium)
-  - Traditional fermentation
-  - Health benefits
-- **Plant Protein Science** (Hard)
-  - Protein sources and composition
-  - Nutritional considerations
-- **Food Chemistry Basics** (Medium-Hard)
-  - Chemical reactions in cooking
-  - Ingredient interactions
-- **Kitchen Physics** (Hard)
-  - Physical principles in cooking
-  - Heat transfer and dynamics
+- Ingredients Science (Medium-Hard)
+- Food Preservation (Medium)
+- Molecular Gastronomy (Hard)
+- Fermentation & Probiotics (Medium)
+- Plant Protein Science (Hard)
+- Food Chemistry Basics (Medium-Hard)
+- Kitchen Physics (Hard)
 
 ### 4. Food History
-- **Food Origins** (Medium-Hard)
-  - Historical food development
-  - Cultural evolution
-- **Food Traditions** (Medium)
-  - Cultural celebrations
-  - Traditional practices
-- **Ancient Food History** (Medium-Hard)
-  - Historical cooking methods
-  - Traditional ingredients
-- **Spice Trade History** (Medium-Hard)
-  - Historical trade routes
-  - Cultural exchange
-- **Ancient Cooking Methods** (Medium)
-  - Traditional techniques
-  - Historical preservation
-- **Cultural Food Symbolism** (Medium)
-  - Food in ceremonies
-  - Cultural significance
-- **Evolution of Agriculture** (Hard)
-  - Agricultural development
-  - Crop domestication
+- Food Origins (Medium-Hard)
+- Food Traditions (Medium)
+- Ancient Food History (Medium-Hard)
+- Spice Trade History (Medium-Hard)
+- Ancient Cooking Methods (Medium)
+- Cultural Food Symbolism (Medium)
+- Evolution of Agriculture (Hard)
 
 ## API Documentation
 
-### Available Endpoints
+Once the backend server is running, you can access:
+- Interactive API docs: http://localhost:8000/docs
+- Alternative API docs: http://localhost:8000/redoc
+
+### Key Endpoints
 
 #### Categories
 - `GET /categories` - Get all available categories with statistics
@@ -159,22 +143,10 @@ The API will be available at `http://localhost:8000`
 
 ## Educational Features
 
-- **Detailed Explanations**: Each answer includes comprehensive explanations covering:
-  - Historical context
-  - Scientific principles
-  - Cultural significance
-  - Practical applications
-
-- **Progressive Learning**: Question sets are organized by difficulty level:
-  - Easy: Fundamental concepts
-  - Medium: Intermediate techniques
-  - Hard: Advanced topics and specialized knowledge
-
-- **Cultural Awareness**: Special focus on:
-  - Cultural authenticity
-  - Traditional methods
-  - Regional variations
-  - Historical significance
+- **Detailed Explanations**: Each answer includes comprehensive explanations
+- **Progressive Learning**: Question sets organized by difficulty level
+- **Cultural Awareness**: Focus on authenticity and traditions
+- **Regular Updates**: New questions and categories added regularly
 
 ## Contributing
 
