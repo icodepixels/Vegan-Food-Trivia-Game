@@ -1,11 +1,12 @@
 # Vegan Food Trivia Game API
 
-A RESTful API for a vegan-friendly food trivia game featuring questions about world cuisines, cooking basics, food science, and culinary history.
+A RESTful API for a vegan-friendly food trivia game featuring questions about world cuisines, cooking basics, food science, and culinary history. Each question includes detailed explanations to enhance learning.
 
 ## Features
 
 - Multiple categories and difficulty levels
 - Question sets focused on vegan and plant-based topics
+- Detailed explanations for each answer to promote learning
 - Session-based gameplay
 - Real-time game state tracking
 - Comprehensive API documentation
@@ -63,7 +64,7 @@ Once the server is running, you can access the interactive API documentation:
 - `POST /games` - Start a new game with a specific question set
 - `GET /games/{game_id}/state` - Get the current state of a game
 - `GET /games/{game_id}/question` - Get the current question
-- `POST /games/{game_id}/answer` - Submit an answer
+- `POST /games/{game_id}/answer` - Submit an answer and receive explanation
 - `DELETE /games/{game_id}` - End a game session
 
 ## Usage Examples
@@ -120,35 +121,51 @@ Response:
 ```json
 {
   "correct": true,
-  "correct_answer_index": 2
+  "correct_answer_index": 2,
+  "explanation": "Although tempura is now a key part of Japanese cuisine, it was actually introduced by Portuguese missionaries in the 16th century. The word 'tempura' comes from the Latin word 'tempora', which refers to 'times' or 'seasons' when meat wasn't eaten."
 }
 ```
 
 ## Game Categories
 
 1. **World Cuisines**
-   - Asian Cuisine
-   - European Food
-   - Latin American Flavors
-   - Mediterranean Delights
+   - Asian Cuisine (Japanese, Thai, Indian, etc.)
+   - European Food (Italian, French, Greek, etc.)
+   - Latin American Flavors (Mexican, Brazilian, Peruvian)
+   - Mediterranean Delights (Lebanese, Turkish, Moroccan)
+   - African Cuisine (Ethiopian, West African, North African)
+   - Middle Eastern Specialties
 
 2. **Cooking Basics**
    - Kitchen Tools & Equipment
    - Cooking Methods
    - Baking Fundamentals
    - Professional Knife Skills
+   - Plant-Based Substitutes
+   - Advanced Cooking Techniques
 
 3. **Food Science**
-   - Food Science Basics
+   - Ingredients Science
    - Food Preservation
    - Molecular Gastronomy
    - Fermentation & Probiotics
+   - Nutrition Science
+   - Food Chemistry
 
 4. **Food History**
    - Food Origins
    - Food Traditions
-   - Ancient Food History
+   - Ancient Foods
    - Spice Trade History
+   - Ancient Grains
+   - Vegetarian History
+
+## Educational Value
+
+- Each question includes a detailed explanation providing historical context, scientific reasoning, or cultural significance
+- Explanations enhance learning beyond simple right/wrong answers
+- Content covers diverse culinary traditions, techniques, and scientific principles
+- Special focus on sustainable and plant-based food knowledge
 
 ## Contributing
 
@@ -167,3 +184,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - All questions are focused on vegan and plant-based topics
 - Questions cover diverse culinary traditions and techniques
 - Special attention to cultural accuracy and educational value
+- Explanations sourced from reliable culinary and historical references
