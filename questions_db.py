@@ -687,6 +687,128 @@ VEGETARIAN_HISTORY = [
     ),
 ]
 
+# New Question Sets
+
+SOUTHEAST_ASIAN_QUESTIONS = [
+    Question(
+        id=95,
+        question_text="Which herb is essential in Vietnamese pho?",
+        choices=["Cilantro", "Thai Basil", "Mint", "Sage"],
+        correct_answer_index=1,
+        explanation="Thai basil (húng quế) is crucial in Vietnamese pho, adding a distinctive anise-like flavor. Unlike regular basil, Thai basil remains stable in hot soups and provides authentic Southeast Asian aroma.",
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+    Question(
+        id=96,
+        question_text="What is the main ingredient in Indonesian tempeh?",
+        choices=["Mung Beans", "Soybeans", "Black Beans", "Chickpeas"],
+        correct_answer_index=1,
+        explanation="Tempeh originated in Indonesia and is made from fermented soybeans. The fermentation process binds the soybeans into a cake-like form and creates a unique, nutty flavor while increasing nutrient bioavailability.",
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+    Question(
+        id=97,
+        question_text="Which cooking technique is essential for Malaysian nasi lemak?",
+        choices=["Steaming", "Boiling", "Frying", "Grilling"],
+        correct_answer_index=0,
+        explanation="Steaming is essential for preparing nasi lemak, where rice is steamed with coconut milk and pandan leaves. This technique allows the rice to absorb the flavors while maintaining perfect texture.",
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+]
+
+REGIONAL_INDIAN_QUESTIONS = [
+    Question(
+        id=98,
+        question_text="Which state in India is famous for dosa?",
+        choices=["Punjab", "Kerala", "Tamil Nadu", "Bengal"],
+        correct_answer_index=2,
+        explanation="Dosa originated in Tamil Nadu, South India. This fermented crepe made from rice and black gram has been part of Tamil cuisine for centuries, representing the region's mastery of fermentation techniques.",
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+    Question(
+        id=99,
+        question_text="What is the main spice in Kashmiri cuisine?",
+        choices=["Turmeric", "Cardamom", "Saffron", "Cumin"],
+        correct_answer_index=2,
+        explanation="Saffron is central to Kashmiri cuisine, used in both sweet and savory dishes. The region's climate is perfect for growing high-quality saffron, making it an integral part of their culinary heritage.",
+        category="World Cuisines",
+        difficulty="Hard"
+    ),
+    Question(
+        id=100,
+        question_text="Which cooking oil is traditional in Bengali cuisine?",
+        choices=["Coconut Oil", "Mustard Oil", "Sesame Oil", "Sunflower Oil"],
+        correct_answer_index=1,
+        explanation="Mustard oil is characteristic of Bengali cuisine, providing a pungent flavor and unique heat. Its use dates back centuries and is crucial for authentic Bengali dishes, particularly in fish preparations.",
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+]
+
+KITCHEN_ORGANIZATION_QUESTIONS = [
+    Question(
+        id=101,
+        question_text="What is the first step in mise en place?",
+        choices=["Cooking", "Gathering Ingredients", "Plating", "Cleaning"],
+        correct_answer_index=1,
+        explanation="Gathering and measuring all ingredients (mise en place, 'everything in its place') is the crucial first step in kitchen organization. This French culinary technique ensures smooth cooking process and prevents mistakes.",
+        category="Cooking Basics",
+        difficulty="Easy"
+    ),
+    Question(
+        id=102,
+        question_text="How should knives be stored for optimal safety?",
+        choices=["In Drawers", "Magnetic Strip", "Knife Block", "All of Above"],
+        correct_answer_index=1,
+        explanation="A magnetic strip is the optimal storage solution for knives as it keeps them accessible, prevents blade damage, saves counter space, and allows quick drying. This method also helps maintain the knife's edge longer.",
+        category="Cooking Basics",
+        difficulty="Easy"
+    ),
+    Question(
+        id=103,
+        question_text="Which zone in a kitchen should store frequently used items?",
+        choices=["Above Head", "Below Waist", "Between Waist and Shoulder", "Floor Level"],
+        correct_answer_index=2,
+        explanation="The prime storage zone is between waist and shoulder height, known as the 'golden zone.' This ergonomic principle reduces strain and increases efficiency by keeping frequent-use items within easy reach.",
+        category="Cooking Basics",
+        difficulty="Medium"
+    ),
+]
+
+TEMPERATURE_CONTROL_QUESTIONS = [
+    Question(
+        id=104,
+        question_text="What temperature is considered 'medium heat' on a stovetop?",
+        choices=["250-300°F", "325-375°F", "375-425°F", "425-475°F"],
+        correct_answer_index=1,
+        explanation="Medium heat typically ranges from 325-375°F (163-190°C). This temperature range is versatile for many cooking techniques, allowing food to cook through without burning the exterior.",
+        category="Cooking Basics",
+        difficulty="Medium"
+    ),
+    Question(
+        id=105,
+        question_text="Which method best controls moisture in roasted vegetables?",
+        choices=["Covering with Foil", "Using High Heat", "Single Layer Spacing", "Adding Water"],
+        correct_answer_index=2,
+        explanation="Arranging vegetables in a single layer with space between pieces ensures proper air circulation and moisture evaporation. This technique prevents steaming and promotes caramelization for better flavor.",
+        category="Cooking Basics",
+        difficulty="Medium"
+    ),
+    Question(
+        id=106,
+        question_text="What is the ideal resting time for a large roasted vegetable?",
+        choices=["No Rest", "5-10 Minutes", "15-20 Minutes", "30+ Minutes"],
+        correct_answer_index=1,
+        explanation="A 5-10 minute rest allows heat to distribute evenly and internal steam to settle. This prevents moisture loss when cutting and ensures the vegetable maintains its texture and temperature.",
+        category="Cooking Basics",
+        difficulty="Medium"
+    ),
+]
+
 # Define Question Sets
 QUESTION_SETS = [
     QuestionSet(
@@ -890,6 +1012,113 @@ QUESTION_SETS = [
         difficulty="Medium"
     ),
 ]
+
+# Add to QUESTION_SETS list
+QUESTION_SETS.extend([
+    # New World Cuisines Sets
+    QuestionSet(
+        id=19,
+        name="Southeast Asian Flavors",
+        description="Explore the vibrant cuisines of Vietnam, Thailand, and Indonesia!",
+        questions=SOUTHEAST_ASIAN_QUESTIONS,
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=20,
+        name="Regional Indian Cuisine",
+        description="Discover the diverse regional dishes of India!",
+        questions=REGIONAL_INDIAN_QUESTIONS,
+        category="World Cuisines",
+        difficulty="Medium-Hard"
+    ),
+    QuestionSet(
+        id=21,
+        name="East Asian Traditions",
+        description="Learn about Chinese, Korean, and Japanese cooking traditions!",
+        questions=ASIAN_CUISINE_QUESTIONS,  # You'll need to create new questions
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+
+    # New Cooking Basics Sets
+    QuestionSet(
+        id=22,
+        name="Kitchen Organization",
+        description="Master the principles of kitchen organization and mise en place!",
+        questions=KITCHEN_ORGANIZATION_QUESTIONS,
+        category="Cooking Basics",
+        difficulty="Easy"
+    ),
+    QuestionSet(
+        id=23,
+        name="Temperature Control",
+        description="Learn the art of controlling heat in cooking!",
+        questions=TEMPERATURE_CONTROL_QUESTIONS,
+        category="Cooking Basics",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=24,
+        name="Flavor Building",
+        description="Understand how to build and balance flavors!",
+        questions=COOKING_METHODS_QUESTIONS,  # You'll need to create new questions
+        category="Cooking Basics",
+        difficulty="Medium-Hard"
+    ),
+
+    # New Food Science Sets
+    QuestionSet(
+        id=25,
+        name="Plant Protein Science",
+        description="Explore the science of plant-based proteins!",
+        questions=INGREDIENTS_SCIENCE_QUESTIONS,  # You'll need to create new questions
+        category="Food Science",
+        difficulty="Hard"
+    ),
+    QuestionSet(
+        id=26,
+        name="Food Chemistry Basics",
+        description="Learn fundamental chemical reactions in cooking!",
+        questions=INGREDIENTS_SCIENCE_QUESTIONS,  # You'll need to create new questions
+        category="Food Science",
+        difficulty="Medium-Hard"
+    ),
+    QuestionSet(
+        id=27,
+        name="Kitchen Physics",
+        description="Discover the physics principles behind cooking techniques!",
+        questions=INGREDIENTS_SCIENCE_QUESTIONS,  # You'll need to create new questions
+        category="Food Science",
+        difficulty="Hard"
+    ),
+
+    # New Food History Sets
+    QuestionSet(
+        id=28,
+        name="Ancient Cooking Methods",
+        description="Explore how our ancestors prepared food!",
+        questions=ANCIENT_FOODS_QUESTIONS,  # You'll need to create new questions
+        category="Food History",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=29,
+        name="Cultural Food Symbolism",
+        description="Learn about the cultural significance of different foods!",
+        questions=FOOD_TRADITIONS_QUESTIONS,  # You'll need to create new questions
+        category="Food History",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=30,
+        name="Evolution of Agriculture",
+        description="Trace the development of farming and food cultivation!",
+        questions=ANCIENT_FOODS_QUESTIONS,  # You'll need to create new questions
+        category="Food History",
+        difficulty="Hard"
+    ),
+])
 
 def get_question_sets() -> list[QuestionSet]:
     """Return all available question sets."""

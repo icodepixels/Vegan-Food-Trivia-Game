@@ -5,8 +5,8 @@ A RESTful API for a vegan-friendly food trivia game featuring questions about wo
 ## Features
 
 - Multiple categories and difficulty levels
-- Question sets focused on vegan and plant-based topics
-- Detailed explanations for each answer to promote learning
+- 30+ diverse question sets
+- Detailed explanations for each answer
 - Session-based gameplay
 - Real-time game state tracking
 - Comprehensive API documentation
@@ -45,11 +45,101 @@ uvicorn api:app --reload
 
 The API will be available at `http://localhost:8000`
 
-## API Documentation
+## Game Categories and Sets
 
-Once the server is running, you can access the interactive API documentation:
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
+### 1. World Cuisines
+- **Asian Cuisine Explorer** (Easy-Medium)
+  - Traditional Japanese, Chinese, Korean dishes
+  - Cooking techniques and ingredients
+- **European Food Journey** (Medium-Hard)
+  - Classic European recipes and methods
+  - Regional specialties and traditions
+- **Latin American Flavors** (Easy-Medium)
+  - Traditional preparations and ingredients
+  - Cultural significance of dishes
+- **Mediterranean Delights** (Medium-Hard)
+  - Healthy Mediterranean cooking
+  - Traditional preparation methods
+- **Southeast Asian Flavors** (Medium)
+  - Vietnamese, Thai, and Indonesian cuisine
+  - Traditional herbs and spices
+- **Regional Indian Cuisine** (Medium-Hard)
+  - Diverse regional specialties
+  - Traditional cooking techniques
+- **East Asian Traditions** (Medium)
+  - Chinese, Korean, and Japanese traditions
+  - Cultural cooking methods
+
+### 2. Cooking Basics
+- **Kitchen Tools & Equipment** (Easy-Medium)
+  - Essential kitchen implements
+  - Proper tool usage and care
+- **Cooking Methods** (Easy-Medium)
+  - Basic cooking techniques
+  - Temperature and timing
+- **Baking Fundamentals** (Medium)
+  - Plant-based baking principles
+  - Ingredient substitutions
+- **Professional Knife Skills** (Medium-Hard)
+  - Cutting techniques
+  - Knife care and safety
+- **Kitchen Organization** (Easy)
+  - Mise en place principles
+  - Efficient kitchen setup
+- **Temperature Control** (Medium)
+  - Heat management
+  - Cooking precision
+- **Flavor Building** (Medium-Hard)
+  - Taste balancing
+  - Seasoning techniques
+
+### 3. Food Science
+- **Ingredients Science** (Medium-Hard)
+  - Chemical properties of ingredients
+  - Cooking reactions
+- **Food Preservation** (Medium)
+  - Traditional and modern methods
+  - Safety principles
+- **Molecular Gastronomy** (Hard)
+  - Modern cooking techniques
+  - Scientific principles
+- **Fermentation & Probiotics** (Medium)
+  - Traditional fermentation
+  - Health benefits
+- **Plant Protein Science** (Hard)
+  - Protein sources and composition
+  - Nutritional considerations
+- **Food Chemistry Basics** (Medium-Hard)
+  - Chemical reactions in cooking
+  - Ingredient interactions
+- **Kitchen Physics** (Hard)
+  - Physical principles in cooking
+  - Heat transfer and dynamics
+
+### 4. Food History
+- **Food Origins** (Medium-Hard)
+  - Historical food development
+  - Cultural evolution
+- **Food Traditions** (Medium)
+  - Cultural celebrations
+  - Traditional practices
+- **Ancient Food History** (Medium-Hard)
+  - Historical cooking methods
+  - Traditional ingredients
+- **Spice Trade History** (Medium-Hard)
+  - Historical trade routes
+  - Cultural exchange
+- **Ancient Cooking Methods** (Medium)
+  - Traditional techniques
+  - Historical preservation
+- **Cultural Food Symbolism** (Medium)
+  - Food in ceremonies
+  - Cultural significance
+- **Evolution of Agriculture** (Hard)
+  - Agricultural development
+  - Crop domestication
+
+## API Documentation
 
 ### Available Endpoints
 
@@ -67,105 +157,24 @@ Once the server is running, you can access the interactive API documentation:
 - `POST /games/{game_id}/answer` - Submit an answer and receive explanation
 - `DELETE /games/{game_id}` - End a game session
 
-## Usage Examples
+## Educational Features
 
-### Starting a New Game
+- **Detailed Explanations**: Each answer includes comprehensive explanations covering:
+  - Historical context
+  - Scientific principles
+  - Cultural significance
+  - Practical applications
 
-```bash
-curl -X POST "http://localhost:8000/games?question_set_id=1" -H "accept: application/json"
-```
+- **Progressive Learning**: Question sets are organized by difficulty level:
+  - Easy: Fundamental concepts
+  - Medium: Intermediate techniques
+  - Hard: Advanced topics and specialized knowledge
 
-Response:
-```json
-{
-  "game_id": "550e8400-e29b-41d4-a716-446655440000",
-  "question_set": {
-    "id": 1,
-    "name": "Asian Cuisine Explorer",
-    "description": "Discover the diverse flavors and dishes of Asian cuisine!",
-    "category": "World Cuisines",
-    "difficulty": "Easy-Medium",
-    "question_count": 3
-  },
-  "total_questions": 3
-}
-```
-
-### Getting the Current Question
-
-```bash
-curl -X GET "http://localhost:8000/games/550e8400-e29b-41d4-a716-446655440000/question" -H "accept: application/json"
-```
-
-Response:
-```json
-{
-  "id": 1,
-  "question_text": "Which country did tempura cooking originate from?",
-  "choices": ["China", "Korea", "Japan", "Thailand"],
-  "category": "World Cuisines",
-  "difficulty": "Easy"
-}
-```
-
-### Submitting an Answer
-
-```bash
-curl -X POST "http://localhost:8000/games/550e8400-e29b-41d4-a716-446655440000/answer" \
-     -H "accept: application/json" \
-     -H "Content-Type: application/json" \
-     -d '{"question_id": 1, "selected_answer_index": 2}'
-```
-
-Response:
-```json
-{
-  "correct": true,
-  "correct_answer_index": 2,
-  "explanation": "Although tempura is now a key part of Japanese cuisine, it was actually introduced by Portuguese missionaries in the 16th century. The word 'tempura' comes from the Latin word 'tempora', which refers to 'times' or 'seasons' when meat wasn't eaten."
-}
-```
-
-## Game Categories
-
-1. **World Cuisines**
-   - Asian Cuisine (Japanese, Thai, Indian, etc.)
-   - European Food (Italian, French, Greek, etc.)
-   - Latin American Flavors (Mexican, Brazilian, Peruvian)
-   - Mediterranean Delights (Lebanese, Turkish, Moroccan)
-   - African Cuisine (Ethiopian, West African, North African)
-   - Middle Eastern Specialties
-
-2. **Cooking Basics**
-   - Kitchen Tools & Equipment
-   - Cooking Methods
-   - Baking Fundamentals
-   - Professional Knife Skills
-   - Plant-Based Substitutes
-   - Advanced Cooking Techniques
-
-3. **Food Science**
-   - Ingredients Science
-   - Food Preservation
-   - Molecular Gastronomy
-   - Fermentation & Probiotics
-   - Nutrition Science
-   - Food Chemistry
-
-4. **Food History**
-   - Food Origins
-   - Food Traditions
-   - Ancient Foods
-   - Spice Trade History
-   - Ancient Grains
-   - Vegetarian History
-
-## Educational Value
-
-- Each question includes a detailed explanation providing historical context, scientific reasoning, or cultural significance
-- Explanations enhance learning beyond simple right/wrong answers
-- Content covers diverse culinary traditions, techniques, and scientific principles
-- Special focus on sustainable and plant-based food knowledge
+- **Cultural Awareness**: Special focus on:
+  - Cultural authenticity
+  - Traditional methods
+  - Regional variations
+  - Historical significance
 
 ## Contributing
 
@@ -181,7 +190,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- All questions are focused on vegan and plant-based topics
-- Questions cover diverse culinary traditions and techniques
-- Special attention to cultural accuracy and educational value
-- Explanations sourced from reliable culinary and historical references
+- Comprehensive vegan and plant-based focus
+- Culturally accurate content
+- Educational value prioritized
+- Expert-reviewed explanations
+- Regular content updates
+- Community contributions welcome
