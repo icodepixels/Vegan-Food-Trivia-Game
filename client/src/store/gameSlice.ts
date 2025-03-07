@@ -1,6 +1,13 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import api, { Category, QuestionSet, Question } from '../services/api';
 
+interface PlayerAnswer {
+  selectedAnswer: number;
+  correctAnswer: number;
+  isCorrect: boolean;
+  explanation: string;
+}
+
 interface GameSliceState {
   categories: Category[];
   questionSets: QuestionSet[];
@@ -13,6 +20,7 @@ interface GameSliceState {
   playerName: string;
   loading: boolean;
   error: string | null;
+  playerAnswers: PlayerAnswer[];
 }
 
 const initialState: GameSliceState = {
@@ -27,6 +35,7 @@ const initialState: GameSliceState = {
   playerName: '',
   loading: false,
   error: null,
+  playerAnswers: [],
 };
 
 // Async thunks
@@ -62,19 +71,33 @@ export const submitAnswer = createAsyncThunk(
     gameId: string;
     questionId: number;
     selectedAnswerIndex: number;
-  }) => {
+  }, { getState }) => {
+    const state = getState() as { game: GameSliceState };
+    if (state.game.isGameOver) {
+      throw new Error('Game is already finished');
+    }
+
     const response = await api.submitAnswer(gameId, questionId, selectedAnswerIndex);
     const gameState = await api.getGameState(gameId);
     let nextQuestion = null;
 
-    if (!gameState.is_finished) {
+    const isLastQuestion = state.game.currentQuestionIndex === gameState.total_questions - 1;
+
+    if (!isLastQuestion) {
       nextQuestion = await api.getCurrentQuestion(gameId);
     }
 
+    // Get the current question's explanation from the state
+    const currentQuestion = state.game.questions[state.game.currentQuestionIndex];
+
     return {
       isCorrect: response.correct,
+      selectedAnswer: selectedAnswerIndex,
+      correctAnswer: response.correct_answer_index,
+      explanation: currentQuestion.explanation,
       gameState,
       nextQuestion,
+      isLastQuestion
     };
   }
 );
@@ -90,11 +113,10 @@ export const gameSlice = createSlice({
       state.selectedCategory = action.payload;
     },
     resetGame: (state) => {
-      state.currentQuestionIndex = 0;
-      state.score = 0;
-      state.isGameOver = false;
-      state.gameId = null;
-      state.questions = [];
+      return { ...initialState, categories: state.categories };
+    },
+    removeCompletedQuiz: (state, action: PayloadAction<number>) => {
+      state.questionSets = state.questionSets.filter(set => set.id !== action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -137,6 +159,7 @@ export const gameSlice = createSlice({
         state.currentQuestionIndex = 0;
         state.score = 0;
         state.isGameOver = false;
+        state.error = null;
       })
       .addCase(startGame.rejected, (state, action) => {
         state.loading = false;
@@ -144,27 +167,43 @@ export const gameSlice = createSlice({
       })
       // Submit Answer
       .addCase(submitAnswer.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        // Only set loading if game isn't over
+        if (!state.isGameOver) {
+          state.loading = true;
+          state.error = null;
+        }
       })
       .addCase(submitAnswer.fulfilled, (state, action) => {
-        state.loading = false;
-        if (action.payload.isCorrect) {
-          state.score += 1;
-        }
-        if (action.payload.gameState.is_finished) {
-          state.isGameOver = true;
-        } else if (action.payload.nextQuestion) {
-          state.questions.push(action.payload.nextQuestion);
-          state.currentQuestionIndex += 1;
+        if (!state.isGameOver) {
+          state.loading = false;
+          if (action.payload.isCorrect) {
+            state.score += 1;
+          }
+
+          state.playerAnswers.push({
+            selectedAnswer: action.payload.selectedAnswer,
+            correctAnswer: action.payload.correctAnswer,
+            isCorrect: action.payload.isCorrect,
+            explanation: action.payload.explanation,
+          });
+
+          if (action.payload.isLastQuestion) {
+            state.isGameOver = true;
+          } else if (action.payload.nextQuestion) {
+            state.questions.push(action.payload.nextQuestion);
+            state.currentQuestionIndex += 1;
+          }
         }
       })
       .addCase(submitAnswer.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message || 'Failed to submit answer';
+        // Only update error state if game isn't over
+        if (!state.isGameOver) {
+          state.loading = false;
+          state.error = action.error.message || 'Failed to submit answer';
+        }
       });
   },
 });
 
-export const { setPlayerName, setSelectedCategory, resetGame } = gameSlice.actions;
+export const { setPlayerName, setSelectedCategory, resetGame, removeCompletedQuiz } = gameSlice.actions;
 export default gameSlice.reducer;

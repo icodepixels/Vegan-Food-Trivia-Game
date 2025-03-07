@@ -119,6 +119,22 @@ The application will be available at `http://localhost:5173`
 - Cultural Food Symbolism (Medium)
 - Evolution of Agriculture (Hard)
 
+### 5. Sustainable Cooking
+- Zero Waste Cooking (Easy-Medium)
+- Seasonal Sustainability (Medium)
+- Eco-Friendly Cooking (Medium)
+- Food Preservation Sustainability (Medium)
+- Garden to Table (Medium)
+- Sustainable Kitchen Setup (Medium)
+
+### 6. Global Food Culture
+- Food Rituals (Medium)
+- Celebration Foods (Medium)
+- Dining Customs (Medium-Hard)
+- Sacred Food Traditions (Medium-Hard)
+- Family Food Traditions (Medium)
+- Food Superstitions (Medium)
+
 ## API Documentation
 
 Once the backend server is running, you can access:

@@ -1,23 +1,30 @@
 import { Box, Container, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
-import WelcomeScreen from './WelcomeScreen.tsx';
-import QuestionScreen from './QuestionScreen.tsx';
-import GameOverScreen from './GameOverScreen.tsx';
+import QuestionScreen from './QuestionScreen';
+import GameOverScreen from './GameOverScreen';
+
 
 const Game = () => {
-  const { isGameOver, playerName } = useSelector((state: RootState) => state.game);
+  const { isGameOver, gameId } = useSelector((state: RootState) => state.game);
+
+
+  if (!gameId) {
+    return null;
+  }
 
   return (
     <Container maxWidth="md">
       <Box sx={{ mt: 4, textAlign: 'center' }}>
         <Typography variant="h3" component="h1" gutterBottom>
-          Trivia Game
+          Vegan Food Trivia
         </Typography>
 
-        {!playerName && <WelcomeScreen />}
-        {playerName && !isGameOver && <QuestionScreen />}
-        {isGameOver && <GameOverScreen />}
+        {!isGameOver ? (
+          <QuestionScreen />
+        ) : (
+          <GameOverScreen />
+        )}
       </Box>
     </Container>
   );

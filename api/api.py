@@ -35,6 +35,10 @@ app.add_middleware(
 # Initialize the game session manager
 game_manager = GameSessionManager()
 
+def format_category_name(category: str) -> str:
+    """Convert URL format back to original category name."""
+    return ' '.join(word.capitalize() for word in category.split('-'))
+
 @app.get("/categories", response_model=List[CategoryResponse])
 async def get_categories():
     """Get all available categories with their statistics"""
@@ -80,9 +84,12 @@ async def get_all_question_sets():
 @app.get("/question-sets/{category}", response_model=List[QuestionSetResponse])
 async def get_category_question_sets(category: str):
     """Get question sets for a specific category"""
-    sets = get_sets_by_category(category)
+    # Convert URL format back to original category name
+    original_category = format_category_name(category)
+
+    sets = get_sets_by_category(original_category)
     if not sets:
-        raise HTTPException(status_code=404, detail=f"Category '{category}' not found")
+        raise HTTPException(status_code=404, detail=f"Category '{original_category}' not found")
 
     return [
         QuestionSetResponse(
@@ -143,7 +150,8 @@ async def get_current_question(game_id: str):
         question_text=question.question_text,
         choices=question.choices,
         category=question.category,
-        difficulty=question.difficulty
+        difficulty=question.difficulty,
+        explanation=question.explanation,
     )
 
 @app.post("/games/{game_id}/answer", response_model=AnswerResponse)

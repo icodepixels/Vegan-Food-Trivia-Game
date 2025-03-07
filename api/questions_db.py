@@ -1,4 +1,5 @@
 from models import Question, QuestionSet
+# PROMPT: for each category add 2 new QuestionSets with 2 Questions for each QuestionSets
 
 # World Cuisines Questions
 ASIAN_CUISINE_QUESTIONS = [
@@ -809,6 +810,255 @@ TEMPERATURE_CONTROL_QUESTIONS = [
     ),
 ]
 
+# Sustainable Cooking Questions
+ZERO_WASTE_COOKING = [
+    Question(
+        id=107,
+        question_text="What part of a broccoli plant is often wasted but completely edible?",
+        choices=["Leaves", "Stems", "Roots", "Flowers"],
+        correct_answer_index=0,
+        explanation="Broccoli leaves are completely edible and highly nutritious, containing more beta-carotene than the florets. They can be used like any other leafy green in stir-fries, soups, or salads.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    Question(
+        id=108,
+        question_text="Which storage method best reduces food waste for fresh herbs?",
+        choices=["Plastic Bag", "Herb Bouquet", "Freezing", "Drying"],
+        correct_answer_index=1,
+        explanation="The herb bouquet method (storing herbs upright in water with a loose plastic cover) can extend herb life by up to two weeks. This method provides both water and airflow while preventing dehydration.",
+        category="Sustainable Cooking",
+        difficulty="Easy"
+    ),
+]
+
+SEASONAL_SUSTAINABILITY = [
+    Question(
+        id=109,
+        question_text="Which seasonal eating practice has the lowest carbon footprint?",
+        choices=["Local Seasonal", "Imported Organic", "Greenhouse Local", "Frozen Local"],
+        correct_answer_index=0,
+        explanation="Eating locally grown seasonal produce has the lowest carbon footprint as it requires minimal transportation and no artificial growing conditions. This practice also supports local biodiversity and economy.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    Question(
+        id=110,
+        question_text="What is the most sustainable way to store root vegetables?",
+        choices=["Refrigerator", "Root Cellar", "Room Temperature", "Freezer"],
+        correct_answer_index=1,
+        explanation="A root cellar provides optimal storage conditions using natural cooling and humidity, requiring no electricity. This traditional method can keep root vegetables fresh for months while being energy-efficient.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+]
+
+ECO_FRIENDLY_COOKING = [
+    Question(
+        id=111,
+        question_text="Which cooking method is most energy-efficient?",
+        choices=["Slow Cooker", "Oven", "Stovetop", "Microwave"],
+        correct_answer_index=3,
+        explanation="Microwave cooking is the most energy-efficient method as it heats food directly through molecular excitation, using less energy and time than conventional methods. It can use up to 80% less energy than a standard oven.",
+        category="Sustainable Cooking",
+        difficulty="Easy"
+    ),
+    Question(
+        id=112,
+        question_text="What is the most sustainable protein source?",
+        choices=["Chicken", "Fish", "Legumes", "Eggs"],
+        correct_answer_index=2,
+        explanation="Legumes have the lowest environmental impact among protein sources, requiring minimal water, producing fewer greenhouse gases, and actually improving soil health through nitrogen fixation.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+]
+
+# Global Food Culture Questions
+FOOD_RITUALS = [
+    Question(
+        id=113,
+        question_text="Which culture traditionally serves tea in a specific ceremony called 'Chanoyu'?",
+        choices=["Chinese", "Korean", "Japanese", "Vietnamese"],
+        correct_answer_index=2,
+        explanation="The Japanese tea ceremony (Chanoyu or Sadō) is a ritualized form of preparing and serving matcha tea, embodying principles of harmony, respect, purity, and tranquility.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    Question(
+        id=114,
+        question_text="In which culture is it considered polite to slurp noodles?",
+        choices=["Italian", "Chinese", "Japanese", "Thai"],
+        correct_answer_index=2,
+        explanation="In Japanese culture, slurping noodles is considered polite and shows appreciation for the meal. It also serves a practical purpose by cooling hot noodles and enhancing their flavor through aeration.",
+        category="Global Food Culture",
+        difficulty="Easy"
+    ),
+]
+
+CELEBRATION_FOODS = [
+    Question(
+        id=115,
+        question_text="Which food is traditionally eaten during Diwali?",
+        choices=["Mooncakes", "Ladoo", "Baklava", "Mochi"],
+        correct_answer_index=1,
+        explanation="Ladoo is a traditional sweet made during Diwali, the Hindu festival of lights. These sphere-shaped sweets symbolize wealth and prosperity and are often offered to deities during prayers.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    Question(
+        id=116,
+        question_text="What is the significance of eating black-eyed peas on New Year's Day in the American South?",
+        choices=["Wealth", "Good Luck", "Health", "Love"],
+        correct_answer_index=1,
+        explanation="Eating black-eyed peas on New Year's Day is believed to bring good luck in Southern United States tradition. This custom dates back to the Civil War and is often paired with collard greens symbolizing money.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+]
+
+DINING_CUSTOMS = [
+    Question(
+        id=117,
+        question_text="In which culture is it traditional to eat with the right hand only?",
+        choices=["Chinese", "Indian", "Greek", "Mexican"],
+        correct_answer_index=1,
+        explanation="In Indian culture, it is traditional to eat with the right hand only, as the left hand is considered unclean. This practice requires specific techniques for picking up and mixing food.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    Question(
+        id=118,
+        question_text="What is the traditional seating arrangement in Korean dining?",
+        choices=["By Age", "By Gender", "By Status", "Random"],
+        correct_answer_index=0,
+        explanation="In traditional Korean dining, people are seated according to age, with the eldest person sitting first and younger people waiting to sit. This reflects the importance of age-based hierarchy in Korean culture.",
+        category="Global Food Culture",
+        difficulty="Hard"
+    ),
+]
+
+# Additional Global Food Culture Questions
+FOOD_FESTIVALS = [
+    Question(
+        id=225,
+        question_text="Which country celebrates La Tomatina festival?",
+        choices=["Italy", "Spain", "Mexico", "Greece"],
+        correct_answer_index=1,
+        explanation="La Tomatina, the world's largest food fight festival, is celebrated in Buñol, Spain. Participants throw tomatoes at each other in this unique cultural celebration.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    Question(
+        id=226,
+        question_text="What is celebrated during Thailand's Songkran festival?",
+        choices=["Harvest", "New Year", "Full Moon", "Rain"],
+        correct_answer_index=1,
+        explanation="Songkran is Thai New Year, celebrated with water festivals and traditional foods like khao chae (rice soaked in flower-scented water).",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    Question(
+        id=227,
+        question_text="Which food festival is known as 'Oktoberfest'?",
+        choices=["Wine Festival", "Beer Festival", "Cheese Festival", "Bread Festival"],
+        correct_answer_index=1,
+        explanation="Oktoberfest is the world's largest beer festival, held annually in Munich, Germany, featuring traditional Bavarian food and culture.",
+        category="Global Food Culture",
+        difficulty="Easy"
+    )
+]
+
+FOOD_ETIQUETTE = [
+    Question(
+        id=228,
+        question_text="In which culture is slurping noodles considered polite?",
+        choices=["Chinese", "Japanese", "Korean", "Vietnamese"],
+        correct_answer_index=1,
+        explanation="In Japanese culture, slurping noodles is considered polite and shows appreciation for the meal, particularly with ramen and soba.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    Question(
+        id=229,
+        question_text="What is the proper way to eat sushi?",
+        choices=["Chopsticks", "Hands", "Fork", "Both A and B"],
+        correct_answer_index=3,
+        explanation="Both chopsticks and hands are acceptable for eating sushi. Nigiri sushi is traditionally eaten by hand, while maki rolls can be eaten with chopsticks.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    Question(
+        id=230,
+        question_text="In Middle Eastern culture, which hand should be used for eating?",
+        choices=["Left", "Right", "Both", "Either"],
+        correct_answer_index=1,
+        explanation="In Middle Eastern culture, the right hand should be used for eating, as the left hand is traditionally considered unclean.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    )
+]
+
+RELIGIOUS_FOOD_CUSTOMS = [
+    Question(
+        id=231,
+        question_text="What is Kosher food in Jewish culture?",
+        choices=["Vegetarian", "Blessed Food", "Follows Dietary Laws", "Raw Food"],
+        correct_answer_index=2,
+        explanation="Kosher food follows Jewish dietary laws (kashrut), which include restrictions on certain foods and how they are prepared and combined.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    Question(
+        id=232,
+        question_text="During Ramadan, when can Muslims eat?",
+        choices=["Morning", "Noon", "Evening", "After Sunset"],
+        correct_answer_index=3,
+        explanation="During Ramadan, Muslims fast from dawn to sunset and can eat only after sunset (iftar) and before dawn (suhoor).",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    Question(
+        id=233,
+        question_text="Why do Hindus consider cows sacred?",
+        choices=["Ancient Tradition", "Religious Symbol", "Source of Life", "All of Above"],
+        correct_answer_index=3,
+        explanation="Cows are sacred in Hinduism for multiple reasons: ancient tradition, religious symbolism, and as a source of life-giving milk.",
+        category="Global Food Culture",
+        difficulty="Hard"
+    )
+]
+
+FAMILY_TRADITIONS = [
+    Question(
+        id=234,
+        question_text="What is the significance of Sunday dinner in Italian culture?",
+        choices=["Religious Custom", "Family Bonding", "Traditional Meal", "All of Above"],
+        correct_answer_index=3,
+        explanation="Italian Sunday dinner is a significant tradition combining religious observance, family bonding, and traditional multi-course meals.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    Question(
+        id=235,
+        question_text="What is a 'potlatch' in Native American culture?",
+        choices=["Daily Meal", "Feast", "Ceremony", "Gift Exchange"],
+        correct_answer_index=2,
+        explanation="A potlatch is a ceremonial feast in Native American cultures, often involving gift-giving and celebrating important events.",
+        category="Global Food Culture",
+        difficulty="Hard"
+    ),
+    Question(
+        id=236,
+        question_text="What is 'sobremesa' in Spanish culture?",
+        choices=["Dessert", "After Dinner Talk", "Coffee Time", "Siesta"],
+        correct_answer_index=1,
+        explanation="Sobremesa is the Spanish tradition of relaxed after-dinner conversation, often lasting hours and considered an important part of dining.",
+        category="Global Food Culture",
+        difficulty="Medium"
+    )
+]
+
 # Define Question Sets
 QUESTION_SETS = [
     QuestionSet(
@@ -1011,11 +1261,6 @@ QUESTION_SETS = [
         category="Cooking Basics",
         difficulty="Medium"
     ),
-]
-
-# Add to QUESTION_SETS list
-QUESTION_SETS.extend([
-    # New World Cuisines Sets
     QuestionSet(
         id=19,
         name="Southeast Asian Flavors",
@@ -1040,8 +1285,6 @@ QUESTION_SETS.extend([
         category="World Cuisines",
         difficulty="Medium"
     ),
-
-    # New Cooking Basics Sets
     QuestionSet(
         id=22,
         name="Kitchen Organization",
@@ -1066,8 +1309,6 @@ QUESTION_SETS.extend([
         category="Cooking Basics",
         difficulty="Medium-Hard"
     ),
-
-    # New Food Science Sets
     QuestionSet(
         id=25,
         name="Plant Protein Science",
@@ -1092,8 +1333,6 @@ QUESTION_SETS.extend([
         category="Food Science",
         difficulty="Hard"
     ),
-
-    # New Food History Sets
     QuestionSet(
         id=28,
         name="Ancient Cooking Methods",
@@ -1118,6 +1357,483 @@ QUESTION_SETS.extend([
         category="Food History",
         difficulty="Hard"
     ),
+    QuestionSet(
+        id=31,
+        name="Zero Waste Cooking",
+        description="Learn how to minimize food waste in your kitchen!",
+        questions=ZERO_WASTE_COOKING,
+        category="Sustainable Cooking",
+        difficulty="Easy-Medium"
+    ),
+    QuestionSet(
+        id=32,
+        name="Seasonal Sustainability",
+        description="Master the art of cooking with seasonal ingredients sustainably!",
+        questions=SEASONAL_SUSTAINABILITY,
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=33,
+        name="Eco-Friendly Cooking",
+        description="Discover environmentally conscious cooking methods!",
+        questions=ECO_FRIENDLY_COOKING,
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=34,
+        name="Food Rituals",
+        description="Explore traditional food ceremonies and customs!",
+        questions=FOOD_RITUALS,
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=35,
+        name="Celebration Foods",
+        description="Learn about foods associated with global celebrations!",
+        questions=CELEBRATION_FOODS,
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=36,
+        name="Dining Customs",
+        description="Discover dining etiquette from around the world!",
+        questions=DINING_CUSTOMS,
+        category="Global Food Culture",
+        difficulty="Medium-Hard"
+    ),
+    QuestionSet(
+        id=71,
+        name="Global Food Festivals",
+        description="Explore food celebrations around the world!",
+        questions=FOOD_FESTIVALS,
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=72,
+        name="International Food Etiquette",
+        description="Learn dining customs from different cultures!",
+        questions=FOOD_ETIQUETTE,
+        category="Global Food Culture",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=73,
+        name="Religious Food Customs",
+        description="Understand religious dietary practices!",
+        questions=RELIGIOUS_FOOD_CUSTOMS,
+        category="Global Food Culture",
+        difficulty="Medium-Hard"
+    ),
+    QuestionSet(
+        id=74,
+        name="Family Food Traditions",
+        description="Discover family dining customs worldwide!",
+        questions=FAMILY_TRADITIONS,
+        category="Global Food Culture",
+        difficulty="Medium"
+    )
+]
+
+# New World Cuisines Questions
+NORDIC_CUISINE_QUESTIONS = [
+    Question(
+        id=149,
+        question_text="What is the main ingredient in traditional Swedish gravlax?",
+        choices=["Salmon", "Cod", "Herring", "Trout"],
+        correct_answer_index=0,
+        explanation="Gravlax is traditionally made with salmon cured in salt, sugar, and dill. This preservation method dates back to the Middle Ages when fishermen would ferment salmon by burying it in sand.",
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+    Question(
+        id=150,
+        question_text="Which bread is a staple of Finnish cuisine?",
+        choices=["Rye Bread", "Sourdough", "Wheat Bread", "Flatbread"],
+        correct_answer_index=0,
+        explanation="Rye bread (ruisleipä) is a fundamental part of Finnish cuisine. Its dense, dark nature and high fiber content made it essential for survival in Finland's harsh climate.",
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+]
+
+CARIBBEAN_CUISINE_QUESTIONS = [
+    Question(
+        id=151,
+        question_text="Which fruit is essential in traditional Jamaican ackee and saltfish?",
+        choices=["Mango", "Breadfruit", "Ackee", "Papaya"],
+        correct_answer_index=2,
+        explanation="Ackee, Jamaica's national fruit, is the key ingredient in this dish. When cooked, it has a scrambled egg-like texture and must be prepared properly as unripe ackee can be toxic.",
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+    Question(
+        id=152,
+        question_text="What is the main ingredient in Trinidadian doubles?",
+        choices=["Chickpeas", "Lentils", "Black Beans", "Kidney Beans"],
+        correct_answer_index=0,
+        explanation="Doubles, a popular Trinidadian street food, consists of two bara (fried flatbreads) filled with curried chickpeas. The dish reflects the island's Indian influences.",
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+]
+
+# New Cooking Basics Questions
+ADVANCED_PLATING_QUESTIONS = [
+    Question(
+        id=153,
+        question_text="What is the rule of thirds in food plating?",
+        choices=["Equal portions", "Three colors", "Three textures", "Divide plate in thirds"],
+        correct_answer_index=3,
+        explanation="The rule of thirds in plating suggests dividing the plate into three sections, with the main protein typically occupying one-third of the plate. This creates visual balance and appeal.",
+        category="Cooking Basics",
+        difficulty="Medium"
+    ),
+    Question(
+        id=154,
+        question_text="Which direction should food be plated for optimal presentation?",
+        choices=["Left to right", "Center outward", "Bottom to top", "Random placement"],
+        correct_answer_index=1,
+        explanation="Plating from the center outward creates a focal point and allows for better balance and composition. This technique helps guide the diner's eye and creates a more appealing presentation.",
+        category="Cooking Basics",
+        difficulty="Medium"
+    ),
+]
+
+KITCHEN_EFFICIENCY_QUESTIONS = [
+    Question(
+        id=155,
+        question_text="What is the 'clean as you go' principle?",
+        choices=["Clean after cooking", "Clean while cooking", "Clean before cooking", "Deep clean weekly"],
+        correct_answer_index=1,
+        explanation="The 'clean as you go' principle involves cleaning and organizing during cooking downtime. This maintains a safe, efficient workspace and makes final cleanup much easier.",
+        category="Cooking Basics",
+        difficulty="Easy"
+    ),
+    Question(
+        id=156,
+        question_text="How should tasks be organized in professional cooking?",
+        choices=["By recipe", "By cooking time", "By ingredient", "By difficulty"],
+        correct_answer_index=1,
+        explanation="Organizing tasks by cooking time allows for maximum efficiency. Start with items that take longest to cook, then work on shorter tasks while longer ones are in progress.",
+        category="Cooking Basics",
+        difficulty="Medium"
+    ),
+]
+
+# New Food Science Questions
+ENZYME_COOKING_QUESTIONS = [
+    Question(
+        id=157,
+        question_text="Which enzyme tenderizes meat naturally?",
+        choices=["Amylase", "Protease", "Lipase", "Cellulase"],
+        correct_answer_index=1,
+        explanation="Protease enzymes break down proteins in meat, naturally tenderizing it. These enzymes are found in ingredients like papaya (papain) and pineapple (bromelain).",
+        category="Food Science",
+        difficulty="Hard"
+    ),
+    Question(
+        id=158,
+        question_text="What temperature deactivates most food enzymes?",
+        choices=["120°F", "140°F", "160°F", "180°F"],
+        correct_answer_index=2,
+        explanation="Most food enzymes become inactive at around 160°F (71°C). This is why blanching vegetables before freezing helps preserve their quality by stopping enzyme activity.",
+        category="Food Science",
+        difficulty="Medium"
+    ),
+]
+
+PROTEIN_CHEMISTRY_QUESTIONS = [
+    Question(
+        id=159,
+        question_text="What causes proteins to denature?",
+        choices=["Heat", "Acid", "Salt", "All of above"],
+        correct_answer_index=3,
+        explanation="Proteins can be denatured by heat, acid, salt, and mechanical action. This process changes their structure and is essential in cooking, like when eggs solidify or meat becomes firmer.",
+        category="Food Science",
+        difficulty="Hard"
+    ),
+    Question(
+        id=160,
+        question_text="Which protein creates the structure in bread dough?",
+        choices=["Albumin", "Gluten", "Casein", "Myosin"],
+        correct_answer_index=1,
+        explanation="Gluten proteins (gliadin and glutenin) form the elastic network that gives bread its structure. When hydrated and kneaded, these proteins create the characteristic texture of bread.",
+        category="Food Science",
+        difficulty="Medium"
+    ),
+]
+
+# New Food History Questions
+ANCIENT_PRESERVATION_QUESTIONS = [
+    Question(
+        id=161,
+        question_text="What was the first food preservation method?",
+        choices=["Smoking", "Drying", "Salting", "Fermenting"],
+        correct_answer_index=1,
+        explanation="Drying was the first food preservation method used by humans, dating back to prehistoric times. Sun-drying foods was a simple yet effective way to prevent spoilage.",
+        category="Food History",
+        difficulty="Medium"
+    ),
+    Question(
+        id=162,
+        question_text="Which civilization invented fish sauce?",
+        choices=["Greek", "Roman", "Chinese", "Egyptian"],
+        correct_answer_index=1,
+        explanation="The Romans invented garum, a fermented fish sauce similar to modern Asian fish sauces. It was a staple condiment in Roman cuisine and traded throughout the empire.",
+        category="Food History",
+        difficulty="Hard"
+    ),
+]
+
+CULINARY_INNOVATIONS_QUESTIONS = [
+    Question(
+        id=163,
+        question_text="Who invented the pressure cooker?",
+        choices=["Denis Papin", "James Watt", "Thomas Edison", "Benjamin Franklin"],
+        correct_answer_index=0,
+        explanation="Denis Papin invented the pressure cooker in 1679. Called the 'Digester,' it was designed to extract nutrients from bones and reduce cooking time.",
+        category="Food History",
+        difficulty="Medium"
+    ),
+    Question(
+        id=164,
+        question_text="When was the first cookbook published?",
+        choices=["1700 BCE", "800 BCE", "100 CE", "500 CE"],
+        correct_answer_index=0,
+        explanation="The first known cookbook was written on clay tablets in ancient Mesopotamia around 1700 BCE. It contained recipes for various meat and vegetable dishes.",
+        category="Food History",
+        difficulty="Hard"
+    ),
+]
+
+# Add new sets to QUESTION_SETS
+QUESTION_SETS.extend([
+    QuestionSet(
+        id=43,
+        name="Nordic Cuisine",
+        description="Explore the unique flavors of Scandinavian cooking!",
+        questions=NORDIC_CUISINE_QUESTIONS,
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=44,
+        name="Caribbean Flavors",
+        description="Discover the vibrant tastes of Caribbean cuisine!",
+        questions=CARIBBEAN_CUISINE_QUESTIONS,
+        category="World Cuisines",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=45,
+        name="Advanced Plating",
+        description="Master the art of food presentation!",
+        questions=ADVANCED_PLATING_QUESTIONS,
+        category="Cooking Basics",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=46,
+        name="Kitchen Efficiency",
+        description="Learn professional kitchen organization!",
+        questions=KITCHEN_EFFICIENCY_QUESTIONS,
+        category="Cooking Basics",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=47,
+        name="Enzyme Cooking",
+        description="Understand how enzymes affect cooking!",
+        questions=ENZYME_COOKING_QUESTIONS,
+        category="Food Science",
+        difficulty="Hard"
+    ),
+    QuestionSet(
+        id=48,
+        name="Protein Chemistry",
+        description="Learn about protein behavior in cooking!",
+        questions=PROTEIN_CHEMISTRY_QUESTIONS,
+        category="Food Science",
+        difficulty="Hard"
+    ),
+    QuestionSet(
+        id=49,
+        name="Ancient Preservation",
+        description="Discover historical food preservation methods!",
+        questions=ANCIENT_PRESERVATION_QUESTIONS,
+        category="Food History",
+        difficulty="Medium-Hard"
+    ),
+    QuestionSet(
+        id=50,
+        name="Culinary Innovations",
+        description="Explore major developments in cooking history!",
+        questions=CULINARY_INNOVATIONS_QUESTIONS,
+        category="Food History",
+        difficulty="Hard"
+    ),
+])
+
+# Additional Sustainable Cooking Questions
+SEASONAL_COOKING = [
+    Question(
+        id=237,
+        question_text="Which vegetable is in season during winter?",
+        choices=["Tomatoes", "Root Vegetables", "Zucchini", "Eggplant"],
+        correct_answer_index=1,
+        explanation="Root vegetables like carrots, parsnips, and turnips are winter vegetables, naturally storing well and providing essential nutrients during cold months.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    Question(
+        id=238,
+        question_text="What is the environmental impact of eating seasonal produce?",
+        choices=["Higher Carbon Footprint", "Lower Carbon Footprint", "No Impact", "Higher Water Usage"],
+        correct_answer_index=1,
+        explanation="Eating seasonal produce reduces carbon footprint as it requires less energy for transportation and artificial growing conditions.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    Question(
+        id=239,
+        question_text="Which preservation method is best for seasonal berries?",
+        choices=["Freezing", "Drying", "Canning", "Fermenting"],
+        correct_answer_index=0,
+        explanation="Freezing is ideal for berries as it maintains their nutritional value and flavor while requiring minimal energy for long-term storage.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    )
+]
+
+ZERO_WASTE_KITCHEN = [
+    Question(
+        id=240,
+        question_text="What can you make with vegetable scraps?",
+        choices=["Stock", "Compost", "Animal Feed", "All of Above"],
+        correct_answer_index=3,
+        explanation="Vegetable scraps can be used for multiple purposes: making nutritious stock, creating compost for gardens, or feeding animals, reducing waste.",
+        category="Sustainable Cooking",
+        difficulty="Easy"
+    ),
+    Question(
+        id=241,
+        question_text="How should you store herbs to reduce waste?",
+        choices=["Plastic Bag", "Glass with Water", "Paper Towel", "Freezer"],
+        correct_answer_index=1,
+        explanation="Storing herbs in a glass with water, like flowers, extends their life and reduces waste. This method works especially well for cilantro, parsley, and basil.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    Question(
+        id=242,
+        question_text="What's the best way to reduce food packaging waste?",
+        choices=["Bulk Buying", "Small Portions", "Pre-Cut Foods", "Frozen Foods"],
+        correct_answer_index=0,
+        explanation="Buying in bulk reduces packaging waste and often costs less. Bring reusable containers to bulk stores for maximum waste reduction.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    )
+]
+
+ENERGY_EFFICIENT_COOKING = [
+    Question(
+        id=243,
+        question_text="Which cooking method uses the least energy?",
+        choices=["Slow Cooker", "Oven", "Stovetop", "Microwave"],
+        correct_answer_index=3,
+        explanation="Microwaves are the most energy-efficient cooking method as they heat food directly and require shorter cooking times.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    Question(
+        id=244,
+        question_text="How can you reduce energy use when baking?",
+        choices=["Batch Cooking", "Lower Temperature", "Frequent Checking", "Short Times"],
+        correct_answer_index=0,
+        explanation="Batch cooking maximizes oven efficiency by cooking multiple items at once, reducing overall energy consumption.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    Question(
+        id=245,
+        question_text="What's the most energy-efficient way to defrost food?",
+        choices=["Microwave", "Hot Water", "Refrigerator", "Counter"],
+        correct_answer_index=2,
+        explanation="Defrosting in the refrigerator is most energy-efficient as it uses no additional energy and helps cool the fridge.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    )
+]
+
+WATER_CONSERVATION_COOKING = [
+    Question(
+        id=246,
+        question_text="How can you reduce water use when cooking pasta?",
+        choices=["Less Water", "Cold Start", "Lid On", "All of Above"],
+        correct_answer_index=3,
+        explanation="Using less water, starting with cold water, and keeping the lid on all help reduce water and energy use when cooking pasta.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    Question(
+        id=247,
+        question_text="What's the most water-efficient way to wash vegetables?",
+        choices=["Running Water", "Soaking", "Spray Bottle", "Steam Clean"],
+        correct_answer_index=1,
+        explanation="Soaking vegetables in a bowl of water uses less water than running water and can be reused for plants.",
+        category="Sustainable Cooking",
+        difficulty="Easy"
+    ),
+    Question(
+        id=248,
+        question_text="How can you reuse cooking water?",
+        choices=["Water Plants", "Make Stock", "Clean Dishes", "All of Above"],
+        correct_answer_index=3,
+        explanation="Cooking water can be reused for watering plants, making stock, or cleaning, reducing water waste and preserving nutrients.",
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    )
+]
+
+# Add to QUESTION_SETS list
+QUESTION_SETS.extend([
+    QuestionSet(
+        id=75,
+        name="Seasonal Cooking",
+        description="Learn to cook with seasonal ingredients!",
+        questions=SEASONAL_COOKING,
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=76,
+        name="Zero Waste Kitchen",
+        description="Master techniques for a waste-free kitchen!",
+        questions=ZERO_WASTE_KITCHEN,
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=77,
+        name="Energy Efficient Cooking",
+        description="Cook sustainably with minimal energy use!",
+        questions=ENERGY_EFFICIENT_COOKING,
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    ),
+    QuestionSet(
+        id=78,
+        name="Water Conservation",
+        description="Learn water-saving cooking techniques!",
+        questions=WATER_CONSERVATION_COOKING,
+        category="Sustainable Cooking",
+        difficulty="Medium"
+    )
 ])
 
 def get_question_sets() -> list[QuestionSet]:

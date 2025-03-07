@@ -7,6 +7,7 @@ class QuestionResponse(BaseModel):
     choices: List[str]
     category: str
     difficulty: str
+    explanation: Optional[str] = None
 
 class QuestionWithAnswer(QuestionResponse):
     correct_answer_index: int

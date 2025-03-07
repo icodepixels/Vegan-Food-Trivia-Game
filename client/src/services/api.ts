@@ -1,4 +1,4 @@
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 const API_BASE_URL = 'http://localhost:8000';
 
@@ -23,6 +23,7 @@ export interface Question {
   choices: string[];
   category: string;
   difficulty: string;
+  explanation: string;
 }
 
 export interface GameState {
@@ -32,100 +33,57 @@ export interface GameState {
   is_finished: boolean;
 }
 
-interface ApiErrorResponse {
-  detail: string;
-}
-
-const handleApiError = (error: unknown) => {
-  if (axios.isAxiosError(error)) {
-    const axiosError = error as AxiosError<ApiErrorResponse>;
-    console.error('API Error:', {
-      status: axiosError.response?.status,
-      data: axiosError.response?.data,
-      config: {
-        method: axiosError.config?.method,
-        url: axiosError.config?.url,
-        data: axiosError.config?.data,
-      }
-    });
-    throw new Error(axiosError.response?.data?.detail || axiosError.message);
-  }
-  throw error;
+const formatUrlParam = (text: string): string => {
+  return text
+    .toLowerCase()
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
 };
 
 const api = {
   // Get all categories
   getCategories: async (): Promise<Category[]> => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/categories`);
-      return response.data;
-    } catch (error) {
-      return handleApiError(error);
-    }
+    const response = await axios.get(`${API_BASE_URL}/categories`);
+    return response.data;
   },
 
   // Get question sets for a category
   getCategoryQuestionSets: async (category: string): Promise<QuestionSet[]> => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/question-sets/${category}`);
-      return response.data;
-    } catch (error) {
-      return handleApiError(error);
-    }
+    const formattedCategory = formatUrlParam(category);
+    const response = await axios.get(`${API_BASE_URL}/question-sets/${formattedCategory}`);
+    return response.data;
   },
 
   // Start a new game
   createGame: async (questionSetId: number) => {
-    try {
-      console.log('Starting game with question set:', questionSetId);
-      const response = await axios.post(`${API_BASE_URL}/games?question_set_id=${questionSetId}`);
-      console.log('Game created:', response.data);
-      return response.data;
-    } catch (error) {
-      return handleApiError(error);
-    }
+    const response = await axios.post(`${API_BASE_URL}/games?question_set_id=${questionSetId}`);
+    return response.data;
   },
 
   // Get current question
   getCurrentQuestion: async (gameId: string): Promise<Question> => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/games/${gameId}/question`);
-      return response.data;
-    } catch (error) {
-      return handleApiError(error);
-    }
+    const response = await axios.get(`${API_BASE_URL}/games/${gameId}/question`);
+    return response.data;
   },
 
   // Submit answer
   submitAnswer: async (gameId: string, questionId: number, selectedAnswerIndex: number) => {
-    try {
-      const response = await axios.post(`${API_BASE_URL}/games/${gameId}/answer`, {
-        question_id: questionId,
-        selected_answer_index: selectedAnswerIndex
-      });
-      return response.data;
-    } catch (error) {
-      return handleApiError(error);
-    }
+    const response = await axios.post(`${API_BASE_URL}/games/${gameId}/answer`, {
+      question_id: questionId,
+      selected_answer_index: selectedAnswerIndex
+    });
+    return response.data;
   },
 
   // Get game state
   getGameState: async (gameId: string): Promise<GameState> => {
-    try {
-      const response = await axios.get(`${API_BASE_URL}/games/${gameId}/state`);
-      return response.data;
-    } catch (error) {
-      return handleApiError(error);
-    }
+    const response = await axios.get(`${API_BASE_URL}/games/${gameId}/state`);
+    return response.data;
   },
 
   // End game
   endGame: async (gameId: string) => {
-    try {
-      await axios.delete(`${API_BASE_URL}/games/${gameId}`);
-    } catch (error) {
-      return handleApiError(error);
-    }
+    await axios.delete(`${API_BASE_URL}/games/${gameId}`);
   }
 };
 
