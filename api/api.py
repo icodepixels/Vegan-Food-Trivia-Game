@@ -35,6 +35,12 @@ app.add_middleware(
 # Initialize the game session manager
 game_manager = GameSessionManager()
 
+# Define the difficulty order
+DIFFICULTY_ORDER = ['easy', 'easy-medium', 'medium', 'medium-hard', 'hard']
+
+def sort_difficulty_levels(difficulties: set[str]) -> List[str]:
+    return sorted(list(difficulties), key=lambda x: DIFFICULTY_ORDER.index(x.lower()) if x.lower() in DIFFICULTY_ORDER else len(DIFFICULTY_ORDER))
+
 def format_category_name(category: str) -> str:
     """Convert URL format back to original category name."""
     return ' '.join(word.capitalize() for word in category.split('-'))
@@ -60,7 +66,7 @@ async def get_categories():
         CategoryResponse(
             name=cat["name"],
             set_count=cat["set_count"],
-            difficulty_levels=sorted(list(cat["difficulty_levels"]))
+            difficulty_levels=sort_difficulty_levels(cat["difficulty_levels"])
         )
         for cat in categories.values()
     ]

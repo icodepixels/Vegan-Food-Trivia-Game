@@ -1,9 +1,11 @@
 import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Suspense } from 'react';
 import { store } from './store/store';
 import WelcomeScreen from './components/WelcomeScreen';
 import QuestionSetsScreen from './components/QuestionSetsScreen';
+import LoadingScreen from './components/LoadingScreen';
 import { Box } from '@mui/material';
 
 const theme = createTheme({
@@ -124,11 +126,13 @@ function App() {
           }}
         >
           <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<WelcomeScreen />} />
-              <Route path="/category/:categoryName" element={<QuestionSetsScreen />} />
-              <Route path="/category/:categoryName/:quizName" element={<QuestionSetsScreen />} />
-            </Routes>
+            <Suspense fallback={<LoadingScreen />}>
+              <Routes>
+                <Route path="/" element={<WelcomeScreen />} />
+                <Route path="/category/:categoryName" element={<QuestionSetsScreen />} />
+                <Route path="/category/:categoryName/:quizName" element={<QuestionSetsScreen />} />
+              </Routes>
+            </Suspense>
           </BrowserRouter>
         </Box>
       </ThemeProvider>

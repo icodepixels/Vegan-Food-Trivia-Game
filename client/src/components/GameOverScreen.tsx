@@ -469,7 +469,7 @@ const GameOverScreen = () => {
                 p: 2,
                 bgcolor: playerAnswers[index]?.isCorrect ? 'success.light' : 'primary.main',
                 color: 'white',
-                borderBottomLeftRadius: '16px',
+                borderBottomLeftRadius: '11px',
                 borderBottomRightRadius: '16px',
                 display: 'flex',
                 alignItems: 'center',

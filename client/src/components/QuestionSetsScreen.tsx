@@ -16,8 +16,9 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../store/store';
-import { fetchQuestionSets, startGame } from '../store/gameSlice';
+import { fetchQuestionSets, startGame, resetGame } from '../store/gameSlice';
 import Game from './Game';
+import { getDifficultyColor } from '../utils/difficultyUtils';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import TimerIcon from '@mui/icons-material/Timer';
 import QuizIcon from '@mui/icons-material/Quiz';
@@ -61,6 +62,13 @@ const QuestionSetsScreen = () => {
     }
   }, [quizName, questionSets]);
 
+  useEffect(() => {
+    // Cleanup function that runs when component unmounts
+    return () => {
+      dispatch(resetGame());
+    };
+  }, []); // Empty dependency array means this only runs on mount/unmount
+
   const handleQuestionSetSelect = async (questionSetId: number, quizName: string) => {
     try {
       const formattedQuizName = quizName
@@ -84,19 +92,6 @@ const QuestionSetsScreen = () => {
     } else {
       // If in category view, go back to home
       navigate('/');
-    }
-  };
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty.toLowerCase()) {
-      case 'easy':
-        return '#4caf50';
-      case 'medium':
-        return '#ff9800';
-      case 'hard':
-        return '#f44336';
-      default:
-        return '#2196f3';
     }
   };
 
@@ -125,15 +120,33 @@ const QuestionSetsScreen = () => {
   return (
     <Container maxWidth="lg">
       <Box sx={{ mt: 4, px: 3 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
+        {/* Enhanced Header */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            mb: 4,
+            background: 'linear-gradient(135deg, primary.main, primary.light)',
+            borderRadius: '16px',
+            padding: '20px',
+            color: 'white',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+          }}
+        >
           <IconButton
             onClick={handleBack}
-            sx={{ mr: 2 }}
+            sx={{
+              mr: 2,
+              color: 'white',
+              '&:hover': {
+                background: 'rgba(255,255,255,0.1)',
+              }
+            }}
             aria-label="back"
           >
             <ArrowBackIcon />
           </IconButton>
-          <Typography variant="h4">
+          <Typography variant="h4" sx={{ textShadow: '2px 2px 4px rgba(0,0,0,0.2)' }}>
             {categoryName && formatDisplayName(categoryName)}
           </Typography>
         </Box>
@@ -144,7 +157,7 @@ const QuestionSetsScreen = () => {
           </Alert>
         )}
 
-        <Grid container spacing={2}>
+        <Grid container spacing={3}>
           {questionSets.map((set) => (
             <Grid item xs={12} sm={6} md={4} key={set.id}>
               <Card sx={{
@@ -207,7 +220,7 @@ const QuestionSetsScreen = () => {
                       boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
                     }}
                   >
-                    {set.difficulty}
+                    {formatDisplayName(set.difficulty)}
                   </Box>
 
                   <CardContent sx={{ p: 3 }}>
